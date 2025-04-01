@@ -15,50 +15,150 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/pages/index.tsx
+        <div className="max-w-4xl mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg">
+          {/* Blog Title */}
+          <h1 className="text-4xl font-bold mb-6 text-center text-blue-400">
+            Tailwind CSS v3 vs v4: What's Changed?
+          </h1>
+
+          {/* Introduction */}
+          <p className="text-lg mb-4">
+            Tailwind CSS v4 introduces several **important changes**,
+            particularly in how **arbitrary values** and **CSS variables** are
+            handled. Below, we compare Tailwind v3 and v4 with examples and a
+            syntax comparison table.
+          </p>
+
+          {/* Syntax Comparison Table */}
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border border-gray-700">
+              <thead>
+                <tr className="bg-gray-800">
+                  <th className="p-3 border border-gray-700">Feature</th>
+                  <th className="p-3 border border-gray-700">
+                    Tailwind v3 (Old)
+                  </th>
+                  <th className="p-3 border border-gray-700">
+                    Tailwind v4 (New)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="p-3 border border-gray-700">
+                    **Custom Colors**
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>text-[#ff5733]</code>
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>text-[#ff5733]</code> (Still Works ✅)
+                  </td>
+                </tr>
+                <tr className="bg-gray-800">
+                  <td className="p-3 border border-gray-700">
+                    **CSS Variables**
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>text-[--brand-color]</code> ❌ (Invalid)
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>text-(--brand-color)</code> ✅ (New Syntax)
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-gray-700">
+                    **Custom Widths**
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>w-[calc(100%-4rem)]</code>
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>w-(calc(100%-4rem))</code> ✅
+                  </td>
+                </tr>
+                <tr className="bg-gray-800">
+                  <td className="p-3 border border-gray-700">
+                    **Custom Heights**
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>h-[var(--my-height)]</code>
+                  </td>
+                  <td className="p-3 border border-gray-700">
+                    <code>h-(var(--my-height))</code> ✅
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Section: Using CSS Variables */}
+          <h2 className="text-2xl font-semibold mt-6 mb-2 text-green-400">
+            Using CSS Variables in v4
+          </h2>
+          <p className="text-lg mb-4">
+            In **Tailwind v4**, CSS variables must now use **parentheses `( )`
+            instead of square brackets `[ ]`**.
+          </p>
+
+          {/* Code Example: Correct Usage */}
+          <div className="bg-gray-800 p-4 rounded-md font-mono text-sm">
+            <p className="text-green-400">✅ Correct (Tailwind v4)</p>
+            <code className="block text-blue-300">
+              {`<div className="text-(--brand-color)">Hello World</div>`}
             </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+
+          {/* Code Example: Incorrect Usage */}
+          <div className="bg-gray-800 p-4 rounded-md font-mono text-sm mt-4">
+            <p className="text-red-400">
+              ❌ Incorrect (Tailwind v3 - Deprecated in v4)
+            </p>
+            <code className="block text-yellow-300">
+              {`<div className="text-[--brand-color]">Hello World</div>`}
+            </code>
+          </div>
+
+          {/* Section: Using calc() in v4 */}
+          <h2 className="text-2xl font-semibold mt-6 mb-2 text-blue-400">
+            Using `calc()` in v4
+          </h2>
+          <p className="text-lg mb-4">
+            Tailwind v4 also requires **parentheses** for `calc()` expressions.
+          </p>
+
+          {/* Code Example: Using calc() */}
+          <div className="bg-gray-800 p-4 rounded-md font-mono text-sm">
+            <p className="text-green-400">✅ Correct (Tailwind v4)</p>
+            <code className="block text-blue-300">
+              {`<div className="w-(calc(100%-4rem))">Content</div>`}
+            </code>
+          </div>
+
+          {/* Upgrade Tips */}
+          <h2 className="text-2xl font-semibold mt-6 mb-2 text-yellow-400">
+            Upgrade Tips 🚀
+          </h2>
+          <ul className="list-disc list-inside text-lg mb-4">
+            <li>
+              ✅ **Replace** `-[ ]` with `-( )` for variables and `calc()`
+              expressions.
+            </li>
+            <li>
+              ✅ **Standard arbitrary values** (e.g., `text-[#ff5733]`) **still
+              work**.
+            </li>
+            <li>
+              ✅ **Use `text-(--brand-color)` instead of
+              `text-[--brand-color]`**.
+            </li>
+          </ul>
+
+          {/* Final Note */}
+          <p className="mt-4 text-gray-400 text-sm">
+            If you're migrating from Tailwind v3 to v4, update your codebase by
+            searching for `-[` and replacing it with `-( )` where necessary. 🚀
+          </p>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
